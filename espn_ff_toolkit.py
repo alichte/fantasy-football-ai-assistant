@@ -51,25 +51,25 @@ def get_free_agents(league_dict: dict) -> str:
             output_str += player.name + ", "
     return output_str
 
+def get_roster_and_projections(league_dict: dict) -> str:
+    "Iterate through a dictionary that contains multiple leagues and return a str with teams and their rosters"
 
-"""
-@tool
-def check_recent_activity_league():
-    "Check ESPN for my league's recent transactions"
-    activities = league.recent_activity()
-    for activity in activities:
-        for act in activity.actions:
-            print(act)
-    return act
-"""
+    output_str = "" 
+    for name in sorted(league_dict.keys()):
+        output_str += f"League: {name} \n"
+        output_str += "Players and Projected Stats: \n"
+        l = league_dict[name]['league']
+        l_id = league_dict[name]['tm_id']
+        l_players = check_league_roster_and_stats(l, l_id)
+        for player,proj in l_players:
+            output_str += player + " " + str(proj) + ", "
+        output_str += "\n"
+    return output_str
 
-"""
-@tool
-def get_player_projections(player_name:str) -> str:
-    "Get the projected points for a player in the coming week as well as the rest of the season"
-    player = league.player_info(player_name)
-    try:
-        return player.stats
-    except:
-        return "player was not valid, try again"
-        """
+
+def check_league_roster_and_stats(league: object, tm_id: int) -> str:
+    "Check ESPN for the roster of a specific league"
+    players = []
+    for player in league.teams[tm_id].roster:
+        players.append((player.name, player.stats))
+    return players
