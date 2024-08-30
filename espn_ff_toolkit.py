@@ -2,6 +2,8 @@ import os
 from typing import Optional
 from langchain_core.tools import tool
 from espn_api.football import League
+from langchain_community.tools.reddit_search.tool import RedditSearchRun
+from langchain_community.utilities.reddit_search import RedditSearchAPIWrapper
 
 def get_espn_leagues(league_team_info: tuple, year: int, espn_s2: str, swid: str) -> dict:
     "A way to get your leagues from your config file without sharing your espn info with everyone"
@@ -66,10 +68,10 @@ def get_roster_and_projections(league_dict: dict) -> str:
         output_str += "\n"
     return output_str
 
-
 def check_league_roster_and_stats(league: object, tm_id: int) -> str:
     "Check ESPN for the roster of a specific league"
     players = []
     for player in league.teams[tm_id].roster:
         players.append((player.name, player.stats))
     return players
+
