@@ -60,7 +60,7 @@ if prompt := st.chat_input("I'm F.A.B., a fantasy football assistant that has ac
     response = user_proxy.initiate_chat(assistant, message=prompt, silent = True, summary_method = 'reflection_with_llm')
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        st.markdown(response)
+        st.markdown(response.summary)
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response.summary})
 
