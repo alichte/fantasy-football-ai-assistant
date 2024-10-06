@@ -8,5 +8,8 @@ This notebook and the accompanying set of functions/tools in `espn_ff_toolkit` a
 ## What You Need to Run
 You'll need to bring your own API keys to the table. Set environment variables for `OPENAI_API_KEY`, `GOOGLE_API_KEY`,`GOOGLE_CSE`,`ESPN_S2`. and `ESPN_SWID`. There is documentation through OpenAI, Google, and the `espn_api` package that can help you track all of these down if you've never done it before. 
 
+## How to Use
+The dashboard can be run either directly from the app folder by using `streamlit run app.py` or by building an image from the dockerfile and deploying.
+
 ## Coming Soon
-Coming soon: Checking recent league activity, checking ESPN injury status, checking DraftKings API for Vegas odds
+Coming soon: Checking recent league activity, checking ESPN injury status

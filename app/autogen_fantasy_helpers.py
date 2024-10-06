@@ -57,7 +57,7 @@ def get_free_agents_tool() -> str:
     return get_free_agents(st.session_state['league_dict'])
 
 def get_roster_and_projections_tool() -> str:
-    "Get the rosters for all current leagues and also all projected and past stats"
+    "Get the rosters for all current leagues and also all projected and past stats. Higher projectsion means the player is projected to do better by ESPN."
     return get_roster_and_projections(st.session_state['league_dict'])
 
 
@@ -68,7 +68,7 @@ def get_current_date() -> str:
 
 
 def check_draftkings_salary(player: str) -> str:
-    "Check a player's salary on DraftKings. A higher salary means they are projected to do better"
+    "Check a player's salary on DraftKings. A higher salary means they are projected to do better by Vegas."
     try:
         salary = st.session_state['dk_salaries'][player]
         return(player, "salary on DraftKings is: ", salary)
